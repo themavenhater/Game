@@ -1,4 +1,4 @@
-package com.islam.game.graphics;
+package com.islam;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
