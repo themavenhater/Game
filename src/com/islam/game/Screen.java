@@ -1,10 +1,10 @@
 package com.islam.game;
 
-import java.util.Random;
-
 import com.islam.entities.projectile.Projectile;
 import com.islam.game.graphics.Sprite;
 import com.islam.levels.tile.Tile;
+
+import java.util.Random;
 
                                 //24  a class that will handle pixels on the screen
 
@@ -15,9 +15,8 @@ public class Screen {
 	public int height;
 	public int [] pixels ;
 	public int [] tiles = new int [64 * 64 ];                  // 33 making tiles tables , to put data in every tile on the screen
-	private Random random = new Random();                      // 34 creating a random to fill tiles with random colors
-
 	public int xOffset , yOffset ;
+	private Random random = new Random();                      // 34 creating a random to fill tiles with random colors
 	
 	public Screen(int width, int height) {
 		this.width=width;

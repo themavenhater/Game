@@ -1,8 +1,5 @@
 package com.islam.entities.mob;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.islam.entities.Entity;
 import com.islam.entities.projectile.Projectile;
 import com.islam.game.Screen;

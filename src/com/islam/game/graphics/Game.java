@@ -1,5 +1,6 @@
 package com.islam.game.graphics;
 
+
 import com.islam.entities.mob.Player;
 import com.islam.game.Screen;
 import com.islam.game.input.Keyboard;
@@ -15,7 +16,7 @@ import java.awt.image.DataBufferInt;
 public class Game extends Canvas implements Runnable {  // ***** 1 ****** //
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	public static int width = 400;                 //  1 - static because it's fixed .
@@ -24,7 +25,7 @@ public class Game extends Canvas implements Runnable {  // ***** 1 ****** //
 	public static String title="Lol";
 	
 	public int score=0;
-	
+
 	
 	private Thread thread ;                        //  2- start a process of our game
 	private boolean running = false ;              //  6 - for the game loop 
@@ -51,36 +52,51 @@ public class Game extends Canvas implements Runnable {  // ***** 1 ****** //
 		addKeyListener(key);
 	   
 	}
-	
-	public synchronized void start (){             // 3- start the thread  // synchronized Synchronized methods enable a simple strategy for preventing thread interference 
-		
+
+	public static void main(String args[]) {
+
+		Game game = new Game();                                             //13 starting our Game , displaying the Window
+		game.frame.setResizable(false);
+		game.frame.setTitle(title);
+		game.frame.add(game);
+		game.frame.pack();
+		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		game.frame.setLocationRelativeTo(null);
+		game.frame.setVisible(true);
+
+
+		game.start();
+
+
+	}
+
+	public synchronized void start() {             // 3- start the thread  // synchronized Synchronized methods enable a simple strategy for preventing thread interference
+
 		running=true;                               // 8 when we call start we must change  running to true to keep the game loop running
 		thread = new Thread(this , " Display");       // 4  this means the thread will contain a Game object
 		thread.start();
 	}
-	
-	
+
      public synchronized void stop (){                // 5 stop the thread to prevent overlaps
-		
+
     	 running = false ;                            // 9 when stop is called running = false
     	 try {
 		thread.join();}
 				catch (InterruptedException e){ System.out.println("EROOR");
 	}
-		
+
      }
 
-	
-	public void run() {                             // 7 main loop of the game 
-		
+	public void run() {                             // 7 main loop of the game
+
 		long lasttime=System.nanoTime();                            //30 timer , frames per secondes
 		final double ns =  1000000000/60;
 		double delta =0;
 		int frames =0, updates=0;
 		long timer=System.currentTimeMillis();
-				
-		while ( running ) { 
-			
+
+		while (running) {
+
 			long now =System.nanoTime();
 			delta+=(now -lasttime)/ns;
 			lasttime=now;
@@ -91,78 +107,56 @@ public class Game extends Canvas implements Runnable {  // ***** 1 ****** //
 			}
 			render();               //    15  display images to the screen
 			frames++;
-			
+
 			if ( System.currentTimeMillis()-timer>1000){
-				
+
 				timer+=1000;
-				
+
 				frame.setTitle(title + "   FPS   "+ updates+"   " + frames);
 				updates=0;
 				frames=0;
-				
+
 			}
-			
-			}
+
+		}
 		stop();
 	}
 	
-	
-	
 	public void render (){                        // 16 making the render methods
-		
+
 		BufferStrategy bs = getBufferStrategy();                  // 18 buffer strategy allows us to store images on memory to render it
-		
+
 		if (bs==null) {
 			createBufferStrategy(3);
 			return;
 		}
-		
+
 		screen.clear();
 		int xScroll =  player.x -screen.width/2;                                     // render the map to place the player in the middle of the screen
 		int yScroll =  player.y -screen.height/2;
 		level.render(xScroll, yScroll, screen);                                       // 28 render method of Screen to fill pixels
 		player.render(screen);
 		player.render2(screen);
-		for (int i=0;  i<pixels.length;i++){              
+		for (int i = 0; i < pixels.length; i++) {
 			pixels[i]=screen.pixels[i];
 		}
-		
-      Graphics g = bs.getDrawGraphics();                      // 19 graphic it's drawin , we link it to the buffer to be rendered 
-       g.drawImage(image,0,0,getWidth(),getHeight(),null);
+
+		Graphics g = bs.getDrawGraphics();                      // 19 graphic it's drawin , we link it to the buffer to be rendered
+		g.drawImage(image,0,0,getWidth(),getHeight(),null);
 	    g.setColor(Color.RED);
 	   // g.fillRect(700, 20,100, 30);
 	    g.setColor(Color.BLACK);
 	    g.setFont(new Font("Verdana",0,30));
 	    g.drawString("Score:"+score, 700, 50);
-	  
-		g.dispose();                                          // 21 transfer the images to be rendered       
-		bs.show();                               
+
+		g.dispose();                                          // 21 transfer the images to be rendered
+		bs.show();
 	}
 	
 	public void update (){                        // 17 making the update method
 		key.update();
 		player.update();
 		level.update();
-	}
-	
-	
-	
-	public static void main (String args[]){
-		
-		Game game = new Game();                                             //13 starting our Game , displaying the Window
-		game.frame.setResizable(false);
-		game.frame.setTitle(title);
-		game.frame.add(game);
-		game.frame.pack();
-		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		game.frame.setLocationRelativeTo(null);
-		game.frame.setVisible(true);
-		
-		
-		game.start();
-		
-		
-		
 	}
 	
 	

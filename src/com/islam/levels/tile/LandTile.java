@@ -1,7 +1,7 @@
 package com.islam.levels.tile;
 
 import com.islam.game.Screen;
-import com.islam.game.graphics.Sprite;                                           // 47 creating tile of type Land
+import com.islam.game.graphics.Sprite;
 
 public class LandTile extends Tile {
 

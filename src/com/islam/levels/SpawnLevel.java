@@ -1,13 +1,8 @@
 package com.islam.levels;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
-import com.islam.entities.mob.Dummy;
-import com.islam.entities.mob.Player;
-import com.islam.game.input.Keyboard;
 
 public class SpawnLevel extends Level{
 

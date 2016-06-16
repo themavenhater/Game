@@ -1,14 +1,13 @@
 package com.islam.game.input;
 
-import java.awt.event.KeyEvent;                         // 40 Keylistner
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Keyboard implements KeyListener {
 
+	public boolean up, down, right, left, space;
 	private   boolean keys[] = new boolean [120];
 	private   boolean keysshoot[] = new boolean [120];
-	public boolean up , down,right , left ,space;
-	
 	
 	public void update (){
 		
