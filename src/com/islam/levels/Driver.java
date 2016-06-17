@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Driver {
-    public int[] sqlTiles = new int[551];
+    public int[] sqlTiles = new int[550];
 
     public Driver() {
         System.out.println("get to driver ");
@@ -54,9 +54,11 @@ public class Driver {
             }
             myConn.close();
 
-            System.out.println(rownss);
-            System.out.println(x);
+            //System.out.println(rownss);
+            //System.out.println(x);
+
             Level.tiles = sqlTiles.clone();
+
             for (int f = 0; f < Level.tiles.length; f++) {
                 if (f > 0) {
                     System.out.print(", ");

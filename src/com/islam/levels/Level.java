@@ -10,19 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level {
-	public static int[] tiles;                        // store level tiles " colors of the level.png"
+	public static int[] tiles;                       // store level tiles " colors of the level.png"
 	public static Level spawn = new SpawnLevel("/textures/spawn.png");
 	// level class organize which tile need to be rendered
 	protected int width , height;
 	protected int tilesint[];
 	private List<Entity> entities = new ArrayList<Entity>();
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
-	
-	
-	
-	
-	public Level(String path){                                                               //44 load level from text file 
-		loadLevel(path);
+
+
+	public Level() {           //44 load level from text file
+		tiles = new int[550];
+		loadLevel();
 		
 	}
 
@@ -30,7 +29,7 @@ public class Level {
 	}
 
 
-	protected void loadLevel(String path) {
+	protected void loadLevel() {
 		
 		
 	}
@@ -117,7 +116,9 @@ public class Level {
 	
 	public Tile getTile (int x , int y){
 
-		//if (x<0 ||y<0 ||x>=width||y>=height)return Tile.voidTile;  // fixing out of bound exception
+
+		if (x < 0 || y < 0 || x >= width || y >= height)
+			return Tile.voidTile;  // fixing out of bound exception
 		if (tiles [x+y * width]==Tile.col_spawn_blackland)  return Tile.spawn_blackland;                                  // 49 get a tile to be rendered
 		if (tiles [x+y * width]==Tile.col_spawn_blackrock) return Tile.spawn_blackrock;
 		if (tiles [x+y * width]==Tile.col_spawn_brownland) return Tile.spawn_brownland;

@@ -6,14 +6,16 @@ public class SpawnLevel extends Level{
 	                                     // Store tiles in an array
 	
 	public SpawnLevel(String path) {
-		super(path);
-		
-	}
+        super();
 
-	
-  protected void loadLevel(String path) {
+    }
 
+
+    protected void loadLevel() {
       Driver driver = new Driver();
+        int w, h;
+        width = 25;
+        height = 22;
 
 	}
   protected void generateLevel(){
