@@ -41,15 +41,15 @@ public class Level {
 	}
 	
 	public void update(){                                                                // updating entties , positions ...etc
-		
-		for (int i=0; i<entities.size();i++){
-			
-		entities.get(i).update();
+
+		for (int ii = 0; ii < entities.size(); ii++) {
+
+			entities.get(ii).update();
 	}
-		
-		 for (int i=0; i<projectiles.size();i++){
-				
-				projectiles.get(i).update();
+
+		for (int ii = 0; ii < projectiles.size(); ii++) {
+
+			projectiles.get(ii).update();
 			}
 		}
 	

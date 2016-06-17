@@ -20,7 +20,7 @@ public class SpawnLevel extends Level{
 	}
   protected void generateLevel(){
 	  for (int i = 0; i < tiles.length ; i++){
-		 
-	  }
+
+      }
   }
 }

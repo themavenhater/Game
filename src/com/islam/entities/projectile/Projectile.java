@@ -3,15 +3,14 @@ package com.islam.entities.projectile;
 import com.islam.entities.Entity;
 import com.islam.game.Screen;
 import com.islam.game.graphics.Sprite;
-import com.islam.levels.tile.Tile;
 
 public  class Projectile extends Entity {
 
 	
 	
  
- protected int speed =2;
  public Sprite sprite;
+	protected int speed = 2;
  protected int dir=100 ;
  
  
@@ -44,9 +43,7 @@ public  class Projectile extends Entity {
 	
 	
 	protected void move(){
-		
-       
-		 
+
 		if (dir==0) { System.out.println(dir);
 	    	y += -speed ;
 	    }
@@ -62,16 +59,9 @@ public  class Projectile extends Entity {
 		if (dir==3) {
 			x += -speed ;
 		}
-		 
-        
-    	 System.out.println(speed);
-    	  
-       }
-       
-       
-   
-		
-		
-       
+
+		System.out.println(speed);
 	}
+
+}
 

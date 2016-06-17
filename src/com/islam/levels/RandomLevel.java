@@ -6,8 +6,8 @@ public class RandomLevel extends Level {
 	
 	public static final Random random = new Random();                    //46 setting the random method
 
-	public RandomLevel(int width, int height) {
-		super(width, height);
+	public RandomLevel() {
+		super();
 		
 	}
 	
